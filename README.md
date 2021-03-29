@@ -11,7 +11,7 @@
 
 ## 技术支持
 
-开源地址：https://gitee.com/yitter/idgenerator
+开源地址：https://github.com/yitter/idgenerator
 
 QQ群：646049993
 
@@ -202,3 +202,10 @@ Rust：[查看示例][4]
 [2]: https://gitee.com/yitter/idgenerator/tree/master/Java
 [3]: https://github.com/yitter/idgenerator-go
 [4]: https://gitee.com/yitter/idgenerator/tree/master/Rust
+
+# idgenerator-go
+
+#### 介绍
+这是 https://github.com/yitter/idgenerator 的 Go 专项引用库
+更多使用说明，请参考前述项目。
+

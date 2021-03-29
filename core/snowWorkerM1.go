@@ -117,6 +117,7 @@ func (m1 *SnowWorkerM1) NextOverCostID() uint64 {
 		m1._OverCostCountInOneTerm = 0
 		m1._GenCountInOneTerm = 0
 		return m1.CalcID(m1._LastTimeTick)
+
 	}
 	if m1._OverCostCountInOneTerm >= m1.TopOverCostCount {
 		m1.EndOverCostAction(currentTimeTick)

@@ -22,14 +22,12 @@ func main() {
 	yid.SetIDGenerator(options)
 
 	var times = 50000
-
 	for {
 		var begin = time.Now().UnixNano() / 1e6
 		for i := 0; i < times; i++ {
 			yid.NextID()
 		}
 		var end = time.Now().UnixNano() / 1e6
-
 		fmt.Println(end - begin)
 		time.Sleep(time.Duration(1000) * time.Millisecond)
 	}
