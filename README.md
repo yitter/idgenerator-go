@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # IdGenerator  SnowFlake 雪花算法 原生多语言版本 顶尖优化 超强效能
 
 ## 介绍
@@ -208,4 +209,3 @@ Rust：[查看示例][4]
 #### 介绍
 这是 https://github.com/yitter/idgenerator 的 Go 专项引用库
 更多使用说明，请参考前述项目。
-
