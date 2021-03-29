@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # IdGenerator  SnowFlake 雪花算法 原生多语言版本 顶尖优化 超强效能
 
 ## 介绍
