@@ -1,15 +1,15 @@
 // 版权属于：yitter(yitter@126.com)
 // 代码编辑：guoyahao
 // 代码修订：yitter
-// 开源地址：https://gitee.com/yitter/idgenerator
+// 开源地址：https://github.com/yitter/idgenerator-go
 
 package gen
 
 import (
 	"time"
 
-	"gitee.com/yitter/idgenerator-go/contract"
-	"gitee.com/yitter/idgenerator-go/core"
+	"github.com/yitter/idgenerator-go/contract"
+	"github.com/yitter/idgenerator-go/core"
 )
 
 // DefaultIDGenerator .

@@ -13,7 +13,7 @@ go env -w GOPROXY=https://goproxy.cn,https://goproxy.io,direct
 
 3. 安装方式
 ```
-    go get -u -v gitee.com/yitter/idgenerator-go
+    go get -u -v github.com/yitter/idgenerator-go
 ```
 
 ## Go代码示例

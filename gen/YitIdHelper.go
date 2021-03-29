@@ -1,15 +1,14 @@
-package idgenerator_go
+package gen
 
 // 版权属于：yitter(yitter@126.com)
 // 代码编辑：guoyahao
 // 代码修订：yitter
-// 开源地址：https://gitee.com/yitter/idgenerator
+// 开源地址：https://github.com/yitter/idgenerator-go
 
 import (
 	"sync"
 
-	"gitee.com/yitter/idgenerator-go/contract"
-	"gitee.com/yitter/idgenerator-go/gen"
+	"github.com/yitter/idgenerator-go/contract"
 )
 
 var ins *YitIDHelper
@@ -37,7 +36,7 @@ func (yih *YitIDHelper) GetIDGenInstance() interface{} {
 
 // SetIDGenerator .
 func (yih *YitIDHelper) SetIDGenerator(options *contract.IDGeneratorOptions) {
-	yih.idGenInstance = gen.NewDefaultIDGenerator(options)
+	yih.idGenInstance = NewDefaultIDGenerator(options)
 }
 
 // NextID .
@@ -45,7 +44,7 @@ func (yih *YitIDHelper) NextID() uint64 {
 	once.Do(func() {
 		if yih.idGenInstance == nil {
 			options := contract.NewIDGeneratorOptions(1)
-			yih.idGenInstance = gen.NewDefaultIDGenerator(options)
+			yih.idGenInstance = NewDefaultIDGenerator(options)
 		}
 	})
 

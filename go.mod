@@ -1,3 +1,3 @@
-module "gitee.com/yitter/idgenerator-go"
+module "github.com/yitter/idgenerator-go"
 
 go 1.14
