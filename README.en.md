@@ -3,34 +3,27 @@
 #### Description
 这是 https://github.com/yitter/idgenerator 的 Go 专项引用库
 
-#### Software Architecture
-Software architecture description
+```
+go env -w GO111MODULE=on
+go env -w GOPROXY=https://goproxy.cn,https://goproxy.io,direct
+```
 
-#### Installation
+3. 安装方式
+```
+    go get -u -v github.com/yitter/idgenerator-go
+```
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## Go代码示例
+```
+var yid = gen.YitIdHelper{}
+fmt.Println(yid.NextID())
 
-#### Instructions
+// 方法二：自定义参数
+var options = contract.NewIdGeneratorOptions(1)
+//options.WorkerIdBitLength = 6
+//options.SeqBitLength = 6
+//options.TopOverCostCount = 2000
+//options.BaseTime = time.Date(2020, 2, 20, 2, 20, 2, 20, time.UTC).UnixNano() / 1e6
+yid.SetIdGenerator(options)
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### Contribution
-
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
-
-
-#### Gitee Feature
-
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+```

@@ -18,7 +18,7 @@ go env -w GOPROXY=https://goproxy.cn,https://goproxy.io,direct
 
 ## Go代码示例
 ```
-var yid = YitIdHelper{}
+var yid = gen.YitIdHelper{}
 fmt.Println(yid.NextID())
 
 // 方法二：自定义参数
