@@ -200,5 +200,5 @@ Rust：[查看示例][4]
 
 [1]: https://gitee.com/yitter/idgenerator/tree/master/C%23.NET
 [2]: https://gitee.com/yitter/idgenerator/tree/master/Java
-[3]: https://gitee.com/yitter/idgenerator/tree/master/Go
+[3]: https://gitee.com/houseme/idgenerator-go
 [4]: https://gitee.com/yitter/idgenerator/tree/master/Rust

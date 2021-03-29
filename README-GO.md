@@ -2,7 +2,7 @@
 
 ## Go环境
 
-1.SDK，go1.16
+1.SDK，go1.14
 
 2.启用 Go-Modules
 
@@ -11,11 +11,15 @@ go env -w GO111MODULE=on
 go env -w GOPROXY=https://goproxy.cn,https://goproxy.io,direct
 ```
 
+3. 安装方式
+```
+    go get -u -v gitee.com/yitter/idgenerator-go
+```
 
 ## Go代码示例
 ```
-var yid = idgen.YitIdHelper{}
-fmt.Println(yid.NextId())
+var yid = YitIdHelper{}
+fmt.Println(yid.NextID())
 
 // 方法二：自定义参数
 var options = contract.NewIdGeneratorOptions(1)

@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"time"
 
+	idgenerator_go "gitee.com/yitter/idgenerator-go"
 	"gitee.com/yitter/idgenerator-go/contract"
-	"gitee.com/yitter/idgenerator-go/gen"
 )
 
 func main() {
 	// 方法一：直接采用默认方法生成一个Id
-	var yid = gen.YitIDHelper{}
+	var yid = idgenerator_go.YitIDHelper{}
 	fmt.Println(yid.NextID())
 
 	// 方法二：自定义参数
