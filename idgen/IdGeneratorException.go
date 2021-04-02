@@ -1,29 +1,28 @@
-package contract
+package idgen
 
 // @Project: idgenerator-go
 // @Author: houseme
 // @Description:
-// @File: IDGeneratorException
+// @File: IdGeneratorException
 // @Version: 1.0.0
 // @Date: 2021/4/2 14:09
-// @Package contract
 // GitHub: https://github.com/yitter/idgenerator-go
 
 import "fmt"
 
-// IDGeneratorException .
-type IDGeneratorException struct {
+// IdGeneratorException .
+type IdGeneratorException struct {
 	message string
 	error   error
 }
 
-// IDGeneratorException .
-func (e IDGeneratorException) IDGeneratorException(message ...interface{}) {
+// IdGeneratorException .
+func (e IdGeneratorException) IdGeneratorException(message ...interface{}) {
 	fmt.Println(message...)
 }
 
 // Error .
-func (e IDGeneratorException) Error(err error) string {
+func (e IdGeneratorException) Error(err error) string {
 	e.message = err.Error()
 	e.error = err
 	return e.message

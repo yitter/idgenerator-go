@@ -1,7 +1,7 @@
 #  ❄️ idenerator-go
 
-#### 介绍
-这是 https://github.com/yitter/idgenerator 的 Go 专项引用库
+## 介绍
+这是 https://github.com/yitter/idgenerator 的 Go 专项集成库
 更多使用说明，请参考前述项目。
 
 ## Go环境
@@ -34,3 +34,6 @@ var options = contract.NewIdGeneratorOptions(1)
 yid.SetIdGenerator(options)
 
 ```
+
+## 代码贡献者(按时间顺序)
+guoyahao | houseme

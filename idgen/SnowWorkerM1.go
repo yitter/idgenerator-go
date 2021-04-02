@@ -1,22 +1,15 @@
-package core
+package idgen
 
 import (
 	"sync"
 	"time"
-
-	"github.com/yitter/idgenerator-go/contract"
 )
-
-// 版权属于：yitter(yitter@126.com)
-// 代码编辑：guoyahao
-// 代码修订：yitter
-// 开源地址：https://github.com/yitter/idgenerator-go
 
 // SnowWorkerM1 .
 type SnowWorkerM1 struct {
 	BaseTime                int64  //基础时间
-	WorkerID                uint16 //机器码
-	WorkerIDBitLength       byte   //机器码位长
+	WorkerId                uint16 //机器码
+	WorkerIdBitLength       byte   //机器码位长
 	SeqBitLength            byte   //自增序列数位长
 	MaxSeqNumber            uint32 //最大序列数（含）
 	MinSeqNumber            uint32 //最小序列数（含）
@@ -34,17 +27,17 @@ type SnowWorkerM1 struct {
 }
 
 // NewSnowWorkerM1 .
-func NewSnowWorkerM1(options *contract.IDGeneratorOptions) contract.ISnowWorker {
-	var workerIDBitLength byte
+func NewSnowWorkerM1(options *IdGeneratorOptions) ISnowWorker {
+	var workerIdBitLength byte
 	var seqBitLength byte
 	var maxSeqNumber uint32
 
-	var workerID = options.WorkerID
+	var workerId = options.WorkerId
 
-	if options.WorkerIDBitLength == 0 {
-		workerIDBitLength = 6
+	if options.WorkerIdBitLength == 0 {
+		workerIdBitLength = 6
 	} else {
-		workerIDBitLength = options.WorkerIDBitLength
+		workerIdBitLength = options.WorkerIdBitLength
 	}
 	if options.SeqBitLength == 0 {
 		seqBitLength = 6
@@ -65,12 +58,14 @@ func NewSnowWorkerM1(options *contract.IDGeneratorOptions) contract.ISnowWorker 
 	} else {
 		baseTime = 1582136402000
 	}
-	timestampShift := (byte)(options.WorkerIDBitLength + options.SeqBitLength)
+
+	timestampShift := (byte)(options.WorkerIdBitLength + options.SeqBitLength)
 	currentSeqNumber := options.MinSeqNumber
+
 	return &SnowWorkerM1{
 		BaseTime:          baseTime,
-		WorkerID:          workerID,
-		WorkerIDBitLength: workerIDBitLength,
+		WorkerId:          workerId,
+		WorkerIdBitLength: workerIdBitLength,
 		SeqBitLength:      seqBitLength,
 		MaxSeqNumber:      maxSeqNumber,
 		MinSeqNumber:      minSeqNumber,
@@ -80,7 +75,7 @@ func NewSnowWorkerM1(options *contract.IDGeneratorOptions) contract.ISnowWorker 
 }
 
 // DoGenIDAction .
-func (m1 *SnowWorkerM1) DoGenIDAction(arg *contract.OverCostActionArg) {
+func (m1 *SnowWorkerM1) DoGenIDAction(arg *OverCostActionArg) {
 
 }
 
@@ -136,6 +131,7 @@ func (m1 *SnowWorkerM1) NextOverCostID() uint64 {
 
 		return m1.CalcID(m1._LastTimeTick)
 	}
+
 	m1._GenCountInOneTerm++
 	return m1.CalcID(m1._LastTimeTick)
 }
@@ -154,7 +150,8 @@ func (m1 *SnowWorkerM1) NextNormalID() uint64 {
 			}
 			m1.BeginTurnBackAction(m1._TurnBackTimeTick)
 		}
-		time.Sleep(time.Duration(10) * time.Millisecond)
+
+		time.Sleep(time.Duration(1) * time.Millisecond)
 		return m1.CalcTurnBackID(m1._TurnBackTimeTick)
 	}
 	// 时间追平时，_TurnBackTimeTick清零
@@ -178,19 +175,20 @@ func (m1 *SnowWorkerM1) NextNormalID() uint64 {
 
 		return m1.CalcID(m1._LastTimeTick)
 	}
+
 	return m1.CalcID(m1._LastTimeTick)
 }
 
 // CalcID .
 func (m1 *SnowWorkerM1) CalcID(useTimeTick int64) uint64 {
-	result := uint64(useTimeTick<<m1._TimestampShift) + uint64(m1.WorkerID<<m1.SeqBitLength) + uint64(m1._CurrentSeqNumber)
+	result := uint64(useTimeTick<<m1._TimestampShift) + uint64(m1.WorkerId<<m1.SeqBitLength) + uint64(m1._CurrentSeqNumber)
 	m1._CurrentSeqNumber++
 	return result
 }
 
 // CalcTurnBackID .
 func (m1 *SnowWorkerM1) CalcTurnBackID(useTimeTick int64) uint64 {
-	result := uint64(useTimeTick<<m1._TimestampShift) + uint64(m1.WorkerID<<m1.SeqBitLength) + uint64(m1._TurnBackIndex)
+	result := uint64(useTimeTick<<m1._TimestampShift) + uint64(m1.WorkerId<<m1.SeqBitLength) + uint64(m1._TurnBackIndex)
 	m1._TurnBackTimeTick--
 	return result
 }
@@ -210,8 +208,8 @@ func (m1 *SnowWorkerM1) GetNextTimeTick() int64 {
 	return tempTimeTicker
 }
 
-// NextID .
-func (m1 *SnowWorkerM1) NextID() uint64 {
+// NextId .
+func (m1 *SnowWorkerM1) NextId() uint64 {
 	m1.Lock()
 	defer m1.Unlock()
 	if m1._IsOverCost {

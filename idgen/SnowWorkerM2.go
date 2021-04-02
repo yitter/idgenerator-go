@@ -1,16 +1,9 @@
-package core
+package idgen
 
 import (
 	"fmt"
 	"strconv"
-
-	"github.com/yitter/idgenerator-go/contract"
 )
-
-// 版权属于：yitter(yitter@126.com)
-// 代码编辑：guoyahao
-// 代码修订：yitter
-// 开源地址：https://github.com/yitter/idgenerator-go
 
 // SnowWorkerM2 .
 type SnowWorkerM2 struct {
@@ -18,7 +11,7 @@ type SnowWorkerM2 struct {
 }
 
 // NewSnowWorkerM2 .
-func NewSnowWorkerM2(options *contract.IDGeneratorOptions) contract.ISnowWorker {
+func NewSnowWorkerM2(options *IdGeneratorOptions) ISnowWorker {
 	return &SnowWorkerM2{
 		NewSnowWorkerM1(options).(*SnowWorkerM1),
 	}
@@ -42,6 +35,6 @@ func (m2 SnowWorkerM2) NextID() uint64 {
 		fmt.Println("Time error for {0} milliseconds", strconv.FormatInt(m2._LastTimeTick-currentTimeTick, 10))
 	}
 	m2._LastTimeTick = currentTimeTick
-	result := uint64(currentTimeTick<<m2._TimestampShift) + uint64(m2.WorkerID<<m2.SeqBitLength) + uint64(m2._CurrentSeqNumber)
+	result := uint64(currentTimeTick<<m2._TimestampShift) + uint64(m2.WorkerId<<m2.SeqBitLength) + uint64(m2._CurrentSeqNumber)
 	return result
 }

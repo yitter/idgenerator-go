@@ -1,33 +1,32 @@
-package contract
+package idgen
 
 // @Project: idgenerator-go
 // @Author: houseme
 // @Description:
-// @File: IDGeneratorOptions
+// @File: IdGeneratorOptions
 // @Version: 1.0.0
 // @Date: 2021/4/2 14:10
-// @Package contract
 // GitHub: https://github.com/yitter/idgenerator-go
 
-// IDGeneratorOptions .
-type IDGeneratorOptions struct {
+// IdGeneratorOptions .
+type IdGeneratorOptions struct {
 	Method            uint16 // 雪花计算方法,（1-漂移算法|2-传统算法），默认1
 	BaseTime          int64  // 基础时间（ms单位），不能超过当前系统时间
-	WorkerID          uint16 // 机器码，与 WorkerIDBitLength 有关系
-	WorkerIDBitLength byte   // 机器码位长，范围：1-21（要求：序列数位长+机器码位长不超过22）
+	WorkerId          uint16 // 机器码，与 WorkerIdBitLength 有关系
+	WorkerIdBitLength byte   // 机器码位长，范围：1-21（要求：序列数位长+机器码位长不超过22）
 	SeqBitLength      byte   // 序列数位长，范围：2-21（要求：序列数位长+机器码位长不超过22）
 	MaxSeqNumber      uint32 // 最大序列数（含），（由SeqBitLength计算的最大值）
 	MinSeqNumber      uint32 // 最小序列数（含），默认5，不小于1，不大于MaxSeqNumber
 	TopOverCostCount  uint32 // 最大漂移次数（含），默认2000，推荐范围500-10000（与计算能力有关）
 }
 
-// NewIDGeneratorOptions .
-func NewIDGeneratorOptions(workerID uint16) *IDGeneratorOptions {
-	return &IDGeneratorOptions{
+// NewIdGeneratorOptions .
+func NewIdGeneratorOptions(workerID uint16) *IdGeneratorOptions {
+	return &IdGeneratorOptions{
 		Method:            1,
-		WorkerID:          workerID,
+		WorkerId:          workerID,
 		BaseTime:          1582136402000,
-		WorkerIDBitLength: 6,
+		WorkerIdBitLength: 6,
 		SeqBitLength:      6,
 		MaxSeqNumber:      0,
 		MinSeqNumber:      5,
