@@ -206,10 +206,10 @@ Rust：[查看示例][4]
 
 
 
-[1]: https://gitee.com/yitter/idgenerator/tree/master/C%23.NET
-[2]: https://gitee.com/yitter/idgenerator/tree/master/Java
+[1]: https://github.com/yitter/idgenerator/tree/master/C%23.NET
+[2]: https://github.com/yitter/idgenerator/tree/master/Java
 [3]: https://github.com/yitter/idgenerator-go
-[4]: https://gitee.com/yitter/idgenerator/tree/master/Rust
+[4]: https://github.com/yitter/idgenerator/tree/master/Rust
 
 # idgenerator-go
 
