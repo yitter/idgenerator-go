@@ -1,8 +1,7 @@
 #  ❄️ idenerator-go
 
 ## 介绍
-这是 https://github.com/yitter/idgenerator 的 Go 专项集成库
-更多使用说明，请参考前述项目。
+项目更多介绍参照：https://github.com/yitter/idgenerator
 
 ## Go环境
 
@@ -19,21 +18,26 @@ go env -w GOPROXY=https://goproxy.cn,https://goproxy.io,direct
 ```
     go get -u -v github.com/yitter/idgenerator-go
 ```
+或 go.mod 中添加引用
+```
+require github.com/yitter/idgenerator-go v1.2.0
+```
 
 ## Go代码示例
 ```
-var yid = gen.IDHelperInit()
-fmt.Println(yid.NextID())
 
-// 方法二：自定义参数
-var options = contract.NewIdGeneratorOptions(1)
-//options.WorkerIdBitLength = 6
-//options.SeqBitLength = 6
-//options.TopOverCostCount = 2000
-//options.BaseTime = time.Date(2020, 2, 20, 2, 20, 2, 20, time.UTC).UnixNano() / 1e6
-yid.SetIdGenerator(options)
+// 定义参数
+var options = idgen.NewIdGeneratorOptions(1)
+options.WorkerId = 1
+options.WorkerIdBitLength = 6
+options.SeqBitLength = 6
+// ...
+idgen.SetIdGenerator(options)
+
+// 调用方法生成Id
+var id = idgen.NextId()
 
 ```
 
 ## 代码贡献者(按时间顺序)
-guoyahao | houseme
+guoyahao | amuluowin | houseme
