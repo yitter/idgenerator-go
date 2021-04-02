@@ -10,7 +10,7 @@ import (
 
 func main() {
 	// 方法一：直接采用默认方法生成一个Id
-	var yid = gen.YitIDHelper{}
+	var yid = gen.IDHelperInit()
 	fmt.Println(yid.NextID())
 
 	// 方法二：自定义参数
