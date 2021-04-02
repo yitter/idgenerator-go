@@ -1,0 +1,27 @@
+language: go
+
+matrix:
+  fast_finish: true
+  include:
+    - go: 1.14.x
+    - go: 1.15.x
+    - go: 1.16.x
+    - go: master
+
+before_install:
+  - if [[ "${GO111MODULE}" = "on" ]]; then go mod download; fi
+  - if [[ "${GO111MODULE}" = "on" ]]; then export PATH="${GOPATH}/bin:${GOROOT}/bin:${PATH}"; fi
+
+install:
+  - go get -v .
+  - go get -v golang.org/x/lint/golint
+
+script:
+  - diff <(gofmt -d .) <(echo -n)
+  - go vet -x ./...
+  - golint -set_exit_status ./...
+  - GOARCH=amd64 go test -v ./... -coverprofile=coverage.txt -covermode=atomic
+  - go run ./.example/main.go
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

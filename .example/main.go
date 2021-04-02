@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+	fmt.Println("start time:", time.Now())
 	// 方法一：直接采用默认方法生成一个Id
 	var yid = gen.IDHelperInit()
 	fmt.Println(yid.NextID())
@@ -22,7 +23,7 @@ func main() {
 	yid.SetIDGenerator(options)
 
 	var times = 50000
-	for {
+	for i := 1; i < 10; i++ {
 		var begin = time.Now().UnixNano() / 1e6
 		for i := 0; i < times; i++ {
 			yid.NextID()
@@ -31,5 +32,5 @@ func main() {
 		fmt.Println(end - begin)
 		time.Sleep(time.Duration(1000) * time.Millisecond)
 	}
-
+	fmt.Println("end time:", time.Now())
 }

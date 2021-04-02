@@ -51,7 +51,7 @@ func (yih *YitIDHelper) NextID() uint64 {
 	return yih.idGenInstance.NewLong()
 }
 
-// IDHelperInit
+// IDHelperInit .
 func IDHelperInit() YitIDHelper {
 	return YitIDHelper{}
 }

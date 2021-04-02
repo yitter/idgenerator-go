@@ -6,6 +6,7 @@ package gen
 // 开源地址：https://github.com/yitter/idgenerator-go
 
 import (
+	"strconv"
 	"time"
 
 	"github.com/yitter/idgenerator-go/contract"
@@ -36,7 +37,7 @@ func NewDefaultIDGenerator(options *contract.IDGeneratorOptions) *DefaultIDGener
 
 	maxWorkerIDNumber := uint16(1<<options.WorkerIDBitLength) - 1
 	if options.WorkerID > maxWorkerIDNumber {
-		panic("WorkerID error. (range:[1, " + string(maxWorkerIDNumber) + "]")
+		panic("WorkerID error. (range:[1, " + strconv.FormatUint(uint64(maxWorkerIDNumber), 10) + "]")
 	}
 
 	if options.SeqBitLength < 2 || options.SeqBitLength > 21 {
@@ -45,11 +46,11 @@ func NewDefaultIDGenerator(options *contract.IDGeneratorOptions) *DefaultIDGener
 
 	maxSeqNumber := uint32(1<<options.SeqBitLength) - 1
 	if options.MaxSeqNumber > maxSeqNumber {
-		panic("MaxSeqNumber error. (range:[1, " + string(maxSeqNumber) + "]")
+		panic("MaxSeqNumber error. (range:[1, " + strconv.FormatUint(uint64(maxSeqNumber), 10) + "]")
 	}
 
 	if options.MinSeqNumber > maxSeqNumber {
-		panic("MinSeqNumber error. (range:[1, " + string(maxSeqNumber) + "]")
+		panic("MinSeqNumber error. (range:[1, " + strconv.FormatUint(uint64(maxSeqNumber), 10) + "]")
 	}
 
 	var snowWorker contract.ISnowWorker
