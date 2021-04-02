@@ -1,4 +1,12 @@
-# IdGenerator  SnowFlake 雪花算法 原生多语言版本 顶尖优化 超强效能
+#  ❄️ Go IDGenerator  
+SnowFlake 雪花算法 原生多语言版本 顶尖优化 超强效能
+
+[![Go Reference](https://pkg.go.dev/badge/github.com/yitter/idgenerator-go.svg)](https://pkg.go.dev/github.com/yitter/idgenerator-go)
+[![Build Status](https://travis-ci.com/housemecn/snowflake.svg?branch=master)](https://travis-ci.com/yitter/idgenerator-go)
+[![Go Report](https://goreportcard.com/badge/github.com/housemecn/snowflake?v=1)](https://goreportcard.com/report/yitter/idgenerator-go)
+![GitHub go.mod Go version (subdirectory of monorepo)](https://img.shields.io/github/go-mod/go-version/yitter/idgenerator-go?style=flat-square)
+[![GitHub stars](https://img.shields.io/github/stars/yitter/idgenerator-go)](https://github.com/yitter/idgenerator-go/stargazers)
+![GitHub](https://img.shields.io/github/license/yitter/idgenerator-go)
 
 ## 介绍
 
