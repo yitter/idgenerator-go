@@ -28,9 +28,9 @@ require github.com/yitter/idgenerator-go v1.2.0
 
 // 定义参数
 var options = idgen.NewIdGeneratorOptions(1)
-options.WorkerId = 1
-options.WorkerIdBitLength = 6
-options.SeqBitLength = 6
+//options.WorkerId = 1
+//options.WorkerIdBitLength = 6
+//options.SeqBitLength = 6
 // ...
 idgen.SetIdGenerator(options)
 
