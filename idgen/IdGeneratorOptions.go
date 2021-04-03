@@ -21,10 +21,10 @@ type IdGeneratorOptions struct {
 }
 
 // NewIdGeneratorOptions .
-func NewIdGeneratorOptions(workerID uint16) *IdGeneratorOptions {
+func NewIdGeneratorOptions(workerId uint16) *IdGeneratorOptions {
 	return &IdGeneratorOptions{
 		Method:            1,
-		WorkerId:          workerID,
+		WorkerId:          workerId,
 		BaseTime:          1582136402000,
 		WorkerIdBitLength: 6,
 		SeqBitLength:      6,

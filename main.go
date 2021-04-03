@@ -7,12 +7,7 @@ import (
 )
 
 func main() {
-	//fmt.Println("start time:", time.Now())
-
-	// 方法一：直接采用默认方法生成一个Id
-	fmt.Println(idgen.NextId())
-
-	// 方法二：自定义参数
+	// 自定义参数
 	var options = idgen.NewIdGeneratorOptions(1)
 	//options.WorkerIdBitLength = 6
 	//options.SeqBitLength = 6
@@ -31,6 +26,8 @@ func main() {
 		fmt.Println(end - begin)
 		time.Sleep(time.Duration(1000) * time.Millisecond)
 	}
-
-	//fmt.Println("end time:", time.Now())
 }
+
+// go build -o ./target/yitidgengo.dll -buildmode=c-shared main.go
+// go install -buildmode=shared -linkshared std
+// go build -o ./target/yitidgengo.so -buildmode=c-shared main.go

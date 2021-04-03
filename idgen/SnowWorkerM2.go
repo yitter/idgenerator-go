@@ -17,8 +17,8 @@ func NewSnowWorkerM2(options *IdGeneratorOptions) ISnowWorker {
 	}
 }
 
-// NextID .
-func (m2 SnowWorkerM2) NextID() uint64 {
+// NextId .
+func (m2 SnowWorkerM2) NextId() uint64 {
 	m2.Lock()
 	defer m2.Unlock()
 	currentTimeTick := m2.GetCurrentTimeTick()
