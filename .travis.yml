@@ -14,14 +14,14 @@ before_install:
 
 install:
   - go get -v .
-  - go get -v golang.org/x/lint/golint
+  #- go get -v golang.org/x/lint/golint
 
 script:
   - diff <(gofmt -d .) <(echo -n)
   - go vet -x ./...
-  - golint -set_exit_status ./...
+  #- golint -set_exit_status ./...
   - GOARCH=amd64 go test -v ./... -coverprofile=coverage.txt -covermode=atomic
-  - go run ./.example/main.go
+  - go run ./main.go
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

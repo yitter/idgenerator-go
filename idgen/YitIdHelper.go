@@ -52,21 +52,20 @@ var idGenerator *DefaultIdGenerator
 //	return YitIDHelper{}
 //}
 
-
+// SetIdGenerator .
 func SetIdGenerator(options *IdGeneratorOptions) {
 	singletonMutex.Lock()
 	idGenerator = NewDefaultIdGenerator(options)
 	singletonMutex.Unlock()
 }
 
+// NextId .
 func NextId() uint64 {
 	if idGenerator == nil {
 		singletonMutex.Lock()
-		if idGenerator == nil {
-			options := NewIdGeneratorOptions(1)
-			idGenerator = NewDefaultIdGenerator(options)
-		}
-		singletonMutex.Unlock()
+		defer singletonMutex.Unlock()
+		options := NewIdGeneratorOptions(1)
+		idGenerator = NewDefaultIdGenerator(options)
 	}
 
 	return idGenerator.NewLong()

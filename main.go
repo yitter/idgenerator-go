@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"time"
+
 	"github.com/yitter/idgenerator-go/idgen"
 )
 
