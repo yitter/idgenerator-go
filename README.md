@@ -1,4 +1,4 @@
-﻿#  ❄ idenerator-go
+﻿#  ❄ idgenerator-Go
 
 ## 介绍
 项目更多介绍参照：https://github.com/yitter/idgenerator
