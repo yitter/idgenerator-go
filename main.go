@@ -21,6 +21,7 @@ func main() {
 		for i := 0; i < times; i++ {
 			// fmt.Println(idgen.NextId())
 			idgen.NextId()
+			// fmt.Println(idgen.ExtractTime(idgen.NextId()))
 		}
 
 		var end = time.Now().UnixNano() / 1e3
