@@ -8,6 +8,7 @@
 *.sln.docstates
 *.editorconfig
 __commit.bat
+__download.bat
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
