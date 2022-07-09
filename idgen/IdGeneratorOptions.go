@@ -1,14 +1,11 @@
+/*
+ * 版权属于：yitter(yitter@126.com)
+ * 代码编辑：guoyahao
+ * 代码修订：yitter
+ * 开源地址：https://github.com/yitter/idgenerator
+ */
 package idgen
 
-// @Project: idgenerator-go
-// @Author: houseme
-// @Description:
-// @File: IdGeneratorOptions
-// @Version: 1.0.0
-// @Date: 2021/4/2 14:10
-// GitHub: https://github.com/yitter/idgenerator-go
-
-// IdGeneratorOptions .
 type IdGeneratorOptions struct {
 	Method            uint16 // 雪花计算方法,（1-漂移算法|2-传统算法），默认1
 	BaseTime          int64  // 基础时间（ms单位），不能超过当前系统时间
@@ -20,7 +17,6 @@ type IdGeneratorOptions struct {
 	TopOverCostCount  uint32 // 最大漂移次数（含），默认2000，推荐范围500-10000（与计算能力有关）
 }
 
-// NewIdGeneratorOptions .
 func NewIdGeneratorOptions(workerId uint16) *IdGeneratorOptions {
 	return &IdGeneratorOptions{
 		Method:            1,
