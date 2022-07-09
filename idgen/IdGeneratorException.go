@@ -16,5 +16,5 @@ type IdGeneratorException struct {
 }
 
 func (e IdGeneratorException) IdGeneratorException(message ...interface{}) {
-	fmt.Println(message)
+	fmt.Println(message...)
 }
