@@ -4,6 +4,7 @@
  * 代码修订：yitter
  * 开源地址：https://github.com/yitter/idgenerator
  */
+
 package idgen
 
 import (
@@ -38,6 +39,6 @@ func (m2 SnowWorkerM2) NextId() int64 {
 		fmt.Println("Time error for {0} milliseconds", strconv.FormatInt(m2._LastTimeTick-currentTimeTick, 10))
 	}
 	m2._LastTimeTick = currentTimeTick
-	result := int64(currentTimeTick << m2._TimestampShift) + int64(m2.WorkerId<<m2.SeqBitLength) + int64(m2._CurrentSeqNumber)
+	result := int64(currentTimeTick<<m2._TimestampShift) + int64(m2.WorkerId<<m2.SeqBitLength) + int64(m2._CurrentSeqNumber)
 	return result
 }

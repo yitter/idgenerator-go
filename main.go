@@ -1,9 +1,11 @@
 package main
 
 import (
-	"C"
 	"fmt"
 	"time"
+
+	"C"
+
 	"github.com/yitter/idgenerator-go/idgen"
 	"github.com/yitter/idgenerator-go/regworkerid"
 )
@@ -26,10 +28,10 @@ func RegisterOne(ip *C.char, port int32, password *C.char, maxWorkerId int32) in
 }
 
 // 注册多个 WorkerId，会先注销所有本机已注册的记录
-///export RegisterMany
+// /export RegisterMany
 func RegisterMany(ip *C.char, port int32, password *C.char, maxWorkerId int32, totalCount int32) []int32 {
-	//values := regworkerid.RegisterMany(C.GoString(ip), port, C.GoString(password), maxWorkerId, totalCount)
-	//return (*C.int)(unsafe.Pointer(&values))
+	// values := regworkerid.RegisterMany(C.GoString(ip), port, C.GoString(password), maxWorkerId, totalCount)
+	// return (*C.int)(unsafe.Pointer(&values))
 	return regworkerid.RegisterMany(C.GoString(ip), port, C.GoString(password), maxWorkerId, totalCount)
 }
 
@@ -75,8 +77,8 @@ func main() {
 			fmt.Println("注册的WorkerId:", value)
 		}
 
-		//var workerId = regworkerid.RegisterOne("localhost", 6379, "", 4)
-		//fmt.Println("注册的WorkerId:", workerId)
+		// var workerId = regworkerid.RegisterOne("localhost", 6379, "", 4)
+		// fmt.Println("注册的WorkerId:", workerId)
 
 		fmt.Println("end")
 		time.Sleep(time.Duration(300) * time.Second)
