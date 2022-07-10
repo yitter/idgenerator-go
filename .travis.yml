@@ -3,9 +3,8 @@ language: go
 matrix:
   fast_finish: true
   include:
-    - go: 1.14.x
-    - go: 1.15.x
-    - go: 1.16.x
+    - go: 1.17.x
+    - go: 1.18.x
     - go: master
 
 before_install:
