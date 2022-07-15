@@ -76,12 +76,13 @@ func NewSnowWorkerM1(options *IdGeneratorOptions) ISnowWorker {
 	// 6.MinSeqNumber
 	var minSeqNumber = options.MinSeqNumber
 
-	// 7.Others
+	// 7.TopOverCostCount
 	var topOverCostCount = options.TopOverCostCount
-	if topOverCostCount == 0 {
-		topOverCostCount = 2000
-	}
+	// if topOverCostCount == 0 {
+	// 	topOverCostCount = 2000
+	// }
 
+	// 8.Others
 	timestampShift := (byte)(workerIdBitLength + seqBitLength)
 	currentSeqNumber := minSeqNumber
 

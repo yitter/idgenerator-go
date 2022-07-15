@@ -65,6 +65,11 @@ func NewDefaultIdGenerator(options *IdGeneratorOptions) *DefaultIdGenerator {
 		panic("MinSeqNumber error. (range:[5, " + strconv.FormatUint(uint64(maxSeqNumber), 10) + "]")
 	}
 
+	// 7.TopOverCostCount
+	if options.TopOverCostCount < 0 || options.TopOverCostCount > 10000 {
+		panic("TopOverCostCount error. (range:[0, 10000]")
+	}
+
 	var snowWorker ISnowWorker
 	switch options.Method {
 	case 1:
