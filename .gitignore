@@ -11,6 +11,7 @@
 __commit.bat
 __download.bat
 target
+.dccache
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
