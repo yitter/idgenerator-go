@@ -29,31 +29,30 @@ func main() {
 		idgen.SetIdGenerator(options)
 
 		var genCount = 500000
-		for j := 0; j < 100000; j++ {
-			for {
-				var begin = time.Now().UnixNano() / 1e6
-				for i := 0; i < genCount; i++ {
-					// 生成ID
-					idgen.NextId()
-					// fmt.Println(id)
-				}
-				var end = time.Now().UnixNano() / 1e6
-
-				fmt.Println("耗时：", (end - begin), "ms")
-				time.Sleep(time.Duration(1000) * time.Millisecond)
+		for j := 0; j < 10; j++ {
+			var begin = time.Now().UnixNano() / 1e6
+			for i := 0; i < genCount; i++ {
+				// 生成ID
+				idgen.NextId()
+				// fmt.Println(id)
 			}
+			var end = time.Now().UnixNano() / 1e6
+
+			fmt.Println("耗时：", (end - begin), "ms")
+			time.Sleep(time.Duration(1000) * time.Millisecond)
 		}
 	} else {
 		// ip := "localhost"
-		ipChar := C.CString("localhost")
+		ipAddr := C.CString("localhost:6379")
 		passChar := C.CString("")
+		sentinelMasterName := C.CString("")
 
-		workerIdList := RegisterMany(ipChar, 6379, passChar, 4, 3, 0)
+		workerIdList := RegisterMany(ipAddr, passChar, 4, sentinelMasterName, 3, 10, 5, 15)
 		for _, value := range workerIdList {
 			fmt.Println("注册的WorkerId:", value)
 		}
 
-		id := RegisterOne(ipChar, 6379, passChar, 4, 0)
+		id := RegisterOne(ipAddr, passChar, 4, sentinelMasterName, 3, 10, 15)
 		fmt.Println("注册的WorkerId:", id)
 
 		// C.free(unsafe.Pointer(ipChar))
